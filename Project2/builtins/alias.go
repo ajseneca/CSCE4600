@@ -15,7 +15,7 @@ func AssignAlias(w io.Writer, args ...string) error {
 	file, err := os.OpenFile(path, os.O_RDWR|os.O_CREATE, 0777)
 
 	if (err != nil) {
-		return fmt.Errorf("Could not open/create aliases.txt")
+		return fmt.Errorf("Could not open/create \"aliases.txt\". Error: %w", err)
 	}
 
 	defer file.Close()
