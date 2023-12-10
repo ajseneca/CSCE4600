@@ -1,37 +1,17 @@
-# Project 2: Shell Builtins
+For this project, I implemented the following commands:
+    alias
+    echo
+    history
+    pwd
+    time
+Each command does what you'd generally expect it to do except alias which requires a specific format for its arguement. If you want to add the alias "c" for "cd," you'd type "alias (cd = c)" in the shell. Typing "c" will now grant the same functionality as "cd." This can be stacked for the commands as well, giving a command many aliases if desired. Removing aliases must be done in the "aliases.txt" file in the "Project2" directory.
 
-## Description
+The "history" command will print historical commands (not aliases) by creating a temporary document "history.txt" in the "Project2" directory. The document is created when the first command is successfully entered and deleted upon gracefully exiting the program. Interrupting the program will cause the document to survive until the next run of the shell with no known negative repercussions other than the command printing more than one session's worth of histroical input. 
 
-For this project we'll be adding commands to a simple shell. 
+"echo" simply repeats the arguement entered.
 
-The shell is already written, but you will choose five (5) shell builtins (or shell-adjacent) commands to rewrite into Go, and integrate into the Go shell.
+"pwd" prints the working directory.
 
-There are many builtins or shell-adjacent commands to pick from: 
-[Bourne Shell Builtins](https://www.gnu.org/software/bash/manual/html_node/Bourne-Shell-Builtins.html), 
-[Bash Builtins](https://www.gnu.org/software/bash/manual/html_node/Bash-Builtins.html,), and 
-[Built-in csh and tcsh Commands](https://docstore.mik.ua/orelly/linux/lnut/ch08_09.htm).
+"time" outputs the current time in this timezone.
 
-Feel free to pick from `sh`, `bash`, `csh`, `tcsh`, `ksh` or `zsh` builtins... or if you have something else in mind, ping me and we'll work it out.
-
-As an example, two shell builtins have already been added to the package builtins:
-
-- `cd`
-- `env`
-
-## Steps
-
-1. Clone down the example input/output and skeleton `main.go`:
-
-    `git clone https://github.com/jh125486/CSCE4600`
- 
-2. Copy the `Project2` files to your own git project.
-
-    1. In your `go.mod`, replace "jh125486" in the module line with your GitHub name, e.g.:
-
-      - "module github.com/jh125486/CSCE4600" changes to "module github.com/CoolStudent123/CSCE4600"
-  
-    2. In the `main.go`, replace "jh125486" in the imports with your package path, e.g.:
-
-      - "github.com/jh125486/CSCE4600/Project2/builtins" changes to "github.com/CoolStudent123/CSCE4600/Project2/builtins"
-
-3. Start editing the `main.go` command switch (lines 57-64) and the package `builtins` with your chosen commands.
+"main.go" will need to be copied completely, not just the switch and GitHub path. I installed the linting package mentioned and corrected my code and repository until it stopped providing recommended changes. I will provide a .png in the "Project2" directory as proof. No automated test coverage will be included in the submission. I had too much trouble trying to figure out how to fulfill that requirement and I've already sunk a rediculous amount of time over the last week learning golang. I apologize for this. Nothing further should be needed in order to build the shell.
