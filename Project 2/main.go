@@ -73,16 +73,44 @@ func handleInput(w io.Writer, input string, exit chan<- struct{}) error {
 
 	// Check for built-in commands.
 	// New builtin commands should be added here. Eventually this should be refactored to its own func.
+
+	var existState bool
+	aliasName, existState := builtins.CheckForAlias(w, name)
+
+	if (existState) {
+		name = aliasName
+	}
+
 	switch name {
-	case "cd":
+	case "cd":		
+		err := builtins.AddHistory(w, name)
 		return builtins.ChangeDirectory(args...)
 	case "env":
+		err := builtins.AddHistory(w, name)
 		return builtins.EnvironmentVariables(w, args...)
 	case "pwd":
+		err := builtins.AddHistory(w, name)
 		return builtins.PresentWorkingDirectory(w)
+	case "time":
+		err := builtins.AddHistory(w, name)
+		return builtins.PrintTime(w)
+	case "echo":
+		err := builtins.AddHistory(w, name)
+		return builtins.EchoText(w, args...)
+	case "alias":
+		err := builtins.AddHistory(w, name)
+		return builtins.AssignAlias(w, args...)
+	case "history":
+		err := builtins.AddHistory(w, name)
+		return builtins.PrintHistory(w)
 	case "exit":
+		err := builtins.DeleteHistory(w)
 		exit <- struct{}{}
 		return nil
+	}
+
+	if (err != nil) {
+		fmt.Errorf("Error: ", err)
 	}
 
 	return executeCommand(name, args...)
