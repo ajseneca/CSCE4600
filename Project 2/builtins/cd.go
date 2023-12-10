@@ -9,6 +9,7 @@ import (
 var (
 	ErrInvalidArgCount = errors.New("invalid argument count")
 	HomeDir, _         = os.UserHomeDir()
+	ErrInvalidSyntax = errors.New("Invalid syntax. Please use the format \"alias (ll = ls -a)\" with parenthesis and equal sign included")
 )
 
 func ChangeDirectory(args ...string) error {
