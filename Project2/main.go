@@ -85,49 +85,49 @@ func handleInput(w io.Writer, input string, exit chan<- struct{}) error {
 	case "cd":		
 		err := builtins.AddHistory(w, name)
 		if (err != nil) {
-			fmt.Fprintf(os.stdout, "Error: %v", err)
+			fmt.Fprintf(os.Stdout, "Error: %v", err)
 		}
 		return builtins.ChangeDirectory(args...)
 	case "env":
 		err := builtins.AddHistory(w, name)
 		if (err != nil) {
-			fmt.Fprintf(os.stdout, "Error: %v", err)
+			fmt.Fprintf(os.Stdout, "Error: %v", err)
 		}
 		return builtins.EnvironmentVariables(w, args...)
 	case "pwd":
 		err := builtins.AddHistory(w, name)
 		if (err != nil) {
-			fmt.Fprintf(os.stdout, "Error: %v", err)
+			fmt.Fprintf(os.Stdout, "Error: %v", err)
 		}
 		return builtins.PresentWorkingDirectory(w)
 	case "time":
 		err := builtins.AddHistory(w, name)
 		if (err != nil) {
-			fmt.Fprintf(os.stdout, "Error: %v", err)
+			fmt.Fprintf(os.Stdout, "Error: %v", err)
 		}
 		return builtins.PrintTime(w)
 	case "echo":
 		err := builtins.AddHistory(w, name)
 		if (err != nil) {
-			fmt.Fprintf(os.stdout, "Error: %v", err)
+			fmt.Fprintf(os.Stdout, "Error: %v", err)
 		}
 		return builtins.EchoText(w, args...)
 	case "alias":
 		err := builtins.AddHistory(w, name)
 		if (err != nil) {
-			fmt.Fprintf(os.stdout, "Error: %v", err)
+			fmt.Fprintf(os.Stdout, "Error: %v", err)
 		}
 		return builtins.AssignAlias(w, args...)
 	case "history":
 		err := builtins.AddHistory(w, name)
 		if (err != nil) {
-			fmt.Fprintf(os.stdout, "Error: %v", err)
+			fmt.Fprintf(os.Stdout, "Error: %v", err)
 		}
 		return builtins.PrintHistory(w)
 	case "exit":
 		err := builtins.DeleteHistory(w)
 		if (err != nil) {
-			fmt.Fprintf(os.stdout, "Error: %v", err)
+			fmt.Fprintf(os.Stdout, "Error: %v", err)
 		}
 		exit <- struct{}{}
 		return nil
