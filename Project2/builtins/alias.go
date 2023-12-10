@@ -113,7 +113,7 @@ func CheckForAlias(w io.Writer, args ...string) (string, bool) {
 	file, err := os.Open(path)
 
 	if err != nil {
-		fmt.Fprintf(w, "Could not open \"aliases.txt\". Error: %w", err)
+		fmt.Fprintf(os.Stdout, "Could not open \"aliases.txt\". Error: %w", err)
 		return "", false
 	}
 
